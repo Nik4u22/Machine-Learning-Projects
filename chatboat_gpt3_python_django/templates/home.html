@@ -1,0 +1,28 @@
+{%extends 'base.html' %}
+
+{%block title%} ChatBoat powerd by Chatgpt-3 {%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <input type="text" class="form-control" placeholder="Ask questions?" id="user_input" name="user_input">
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        {% if response %}
+                            <div class="mb-3">
+                                {{response|safe}}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
